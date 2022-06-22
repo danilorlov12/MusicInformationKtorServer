@@ -1,0 +1,1 @@
+rootProject.name = "com.music_info.ktor-music-year-information"
