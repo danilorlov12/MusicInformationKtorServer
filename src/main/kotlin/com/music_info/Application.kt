@@ -1,12 +1,17 @@
 package com.music_info
 
-import io.ktor.server.engine.*
+import com.music_info.features.login.configureLoginRouting
+import com.music_info.features.registration.configureRegisterRouting
+import com.music_info.plugins.configureRouting
+import com.music_info.plugins.configureSerialization
 import io.ktor.server.cio.*
-import com.music_info.plugins.*
+import io.ktor.server.engine.*
 
 fun main() {
     embeddedServer(CIO, port = 8080, host = "0.0.0.0") {
         configureRouting()
+        configureLoginRouting()
+        configureRegisterRouting()
         configureSerialization()
     }.start(wait = true)
 }
