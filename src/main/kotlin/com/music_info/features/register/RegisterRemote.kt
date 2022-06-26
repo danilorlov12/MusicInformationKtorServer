@@ -1,4 +1,4 @@
-package com.music_info.features.registration
+package com.music_info.features.register
 
 import kotlinx.serialization.Serializable
 

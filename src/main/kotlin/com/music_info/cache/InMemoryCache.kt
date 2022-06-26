@@ -1,6 +1,6 @@
 package com.music_info.cache
 
-import com.music_info.features.registration.RegisterReceiveRemote
+import com.music_info.features.register.RegisterReceiveRemote
 
 data class TokenCache(
     val login: String,
