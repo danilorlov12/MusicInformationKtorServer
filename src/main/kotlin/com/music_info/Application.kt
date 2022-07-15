@@ -11,11 +11,11 @@ import org.jetbrains.exposed.sql.Database
 
 fun main() {
     Database.connect(
-        "jdbc:postgresql://localhost:5432/postgres", driver = "org.postgresql.Driver",
-        user ="postgres", password = "zooming4421"
+        "jdbc:postgresql://localhost:5432/postgres?currentSchema=public", driver = "org.postgresql.Driver",
+        user ="postgres", password = ""
     )
 
-    embeddedServer(CIO, port = 8080, host = "192.168.43.243") {
+    embeddedServer(CIO, port = 8080, host = "0.0.0.0") { //192.168.43.243
         configureRouting()
         configureLoginRouting()
         configureRegisterRouting()

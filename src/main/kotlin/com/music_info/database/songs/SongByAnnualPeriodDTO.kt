@@ -1,12 +1,9 @@
 package com.music_info.database.songs
 
-class SongDTO(
-    val id: String,
+class SongByAnnualPeriodDTO(
     val artist: String,
     val name: String,
     val album: String,
     val year: String?,
-    val genre: String?,
-    val language: String?,
-    val country: String?
+    val playCount: Int
 )
