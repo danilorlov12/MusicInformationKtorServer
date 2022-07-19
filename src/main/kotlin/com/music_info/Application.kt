@@ -5,8 +5,8 @@ import com.music_info.features.register.configureRegisterRouting
 import com.music_info.features.songs.configureSongRouting
 import com.music_info.plugins.configureRouting
 import com.music_info.plugins.configureSerialization
-import io.ktor.server.cio.*
-import io.ktor.server.engine.*
+import io.ktor.server.cio.CIO
+import io.ktor.server.engine.embeddedServer
 import org.jetbrains.exposed.sql.Database
 
 fun main() {

@@ -1,14 +1,15 @@
 package com.music_info.features.songs
 
+import com.music_info.constants.QueryParams.ANNUAL_YEAR
 import com.music_info.database.songs.Songs
-import io.ktor.server.application.*
-import io.ktor.server.response.*
+import io.ktor.server.application.ApplicationCall
+import io.ktor.server.response.respond
 
 class SongController {
 
     suspend fun fetchAllSongs(call: ApplicationCall) {
         call.respond(Songs.fetchSongs().map {
-            SongReceiveRemote(
+            SongResponseRemote(
                 id = it.id,
                 artist = it.artist,
                 name = it.name,
@@ -22,8 +23,8 @@ class SongController {
     }
 
     suspend fun fetchSongsByAnnualPeriod(call: ApplicationCall) {
-        call.respond(Songs.fetchSongsByYearPeriod().map {
-            SongByAnnualPeriodReceiveRemote(
+        call.respond(Songs.fetchSongsByYearPeriod(call.parameters[ANNUAL_YEAR] ?: "").map {
+            SongByAnnualPeriodResponseRemote(
                 artist = it.artist,
                 name = it.name,
                 album = it.album,

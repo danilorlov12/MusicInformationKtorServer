@@ -5,12 +5,12 @@ import com.music_info.database.tokens.Tokens
 import com.music_info.database.users.UserDTO
 import com.music_info.database.users.Users
 import com.music_info.utils.isValidEmail
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
-import org.jetbrains.exposed.exceptions.ExposedSQLException
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.ApplicationCall
+import io.ktor.server.request.receive
+import io.ktor.server.response.respond
 import java.util.*
+import org.jetbrains.exposed.exceptions.ExposedSQLException
 
 class RegisterController {
 

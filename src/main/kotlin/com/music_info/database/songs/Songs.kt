@@ -4,6 +4,7 @@ import com.music_info.database.counts.Counts
 import org.jetbrains.exposed.sql.JoinType
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -40,12 +41,14 @@ object Songs : Table("songs") {
         }
     }
 
-    fun fetchSongsByYearPeriod(): List<SongByAnnualPeriodDTO> {
+    fun fetchSongsByYearPeriod(annualYear: String): List<SongByAnnualPeriodDTO> {
         return try {
             transaction {
                 Counts.join(Songs, JoinType.INNER, additionalConstraint = {
                     Songs.id eq Counts.songId
-                }).slice(artist, name, album, year, Counts.playCount).selectAll().orderBy(Counts.playCount, SortOrder.DESC)
+                }).slice(artist, name, album, year, Counts.playCount).select {
+                    Counts.annualPeriod.eq(annualYear)
+                }.orderBy(Counts.playCount, SortOrder.DESC)
                     .map {
                         SongByAnnualPeriodDTO(
                             artist = it[artist],

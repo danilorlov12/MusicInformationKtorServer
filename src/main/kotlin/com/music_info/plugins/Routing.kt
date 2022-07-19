@@ -1,6 +1,6 @@
 package com.music_info.plugins
 
-import io.ktor.server.application.*
+import io.ktor.server.application.Application
 
 fun Application.configureRouting() {
 

@@ -3,10 +3,10 @@ package com.music_info.features.login
 import com.music_info.database.tokens.TokenDTO
 import com.music_info.database.tokens.Tokens
 import com.music_info.database.users.Users
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.ApplicationCall
+import io.ktor.server.request.receive
+import io.ktor.server.response.respond
 import java.util.*
 
 class LoginController {
